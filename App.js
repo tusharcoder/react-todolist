@@ -7,7 +7,6 @@ class App extends Component{
         super(props);
         this.state = {
             tasks : [
-                {task:"this is my example task",flagDone:false}
             ],
             currentTask:"",
         };
@@ -35,7 +34,6 @@ class App extends Component{
             keyExtractor={(item, index) => index.toString()}            
             />
 
-            <Text>{JSON.stringify(this.state)}</Text>
             <Button 
             title = "Add Task"
             onPress={this.addTask}
