@@ -1,23 +1,35 @@
 import React from 'react';
-import {View, Text, ScrollView, Image, TextInput} from 'react-native';
+import {Component} from 'react';
+import {View, Text, ScrollView, Image, TextInput, FlatList} from 'react-native';
 
-export default function App(){
+class App extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            tasks : [
+                {task:"this is my example task",flag_done:false}
+            ]
+        };
+    }
+    render(){
+        return (
+            <View style={{padding: 10}}>
+            <TextInput
+            style={{height: 40}}
+            placeholder="Type here to add task"
+            />
 
-    return (
-        <ScrollView>
-            <Text>Some Text</Text>
-            <View>
-                <Text>Some more text</Text>
-                <Image source={{uri: "https://reactnative.dev/docs/assets/p_cat2.png"}} style={{width:400, height:200}}/>
+            <FlatList
+
+            data = {this.state.tasks}
+            renderItem={({item})=><Text>{item.task}</Text>}
+  keyExtractor={(item, index) => index.toString()}            
+            />
             </View>
-        <TextInput 
-            style={{
-                height:40,
-                borderColor:'gray',
-                borderWidth:1
-            }}
-        defaultValue="You can type in me"
-        />
-        </ScrollView>
-    );
+
+
+        );
+    }
 }
+
+export default App;
